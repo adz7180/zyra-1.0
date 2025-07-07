@@ -7,8 +7,8 @@
       :src="videoUrl"
       class="render-video"
     ></video>
-    <div v-else class="placeholder">
-      <p>No video generated yet. Please input a script to create a scene.</p>
+    <div v-else class="waiting">
+      <div class="frame"></div>
     </div>
     <div class="actions" v-if="videoUrl">
       <button @click="downloadVideo">Download</button>
@@ -63,16 +63,18 @@ h2 {
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
-.placeholder {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px;
-  background: rgba(0, 0, 0, 0.3);
+.waiting {
+  width: 100%;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.02);
   border-radius: 15px;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 1.1rem;
-  text-align: center;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+}
+.frame {
+  width: 100%;
+  height: 100%;
 }
 .actions {
   display: flex;
